@@ -4,4 +4,13 @@
  * and open the template in the editor.
  */
 
-
+angular.module('mainApp').controller('MathController',['MathService',
+    function(MathService){
+        var self = this;
+        
+        self.display = MathService.display;
+        self.calcForm = MathService.calcForm;
+        self.setNumber = MathService.setNumber;
+        
+        return self;
+    }]);

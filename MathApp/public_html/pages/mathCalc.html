@@ -14,7 +14,9 @@ and open the template in the editor.
         <div class="container">
             <div class="row">
                 <div class="box">
-                    <div class="display"><input type="text" readonly size="18" id="display"></div>
+                    <div class="display"><input type="text" readonly size="18" id="display" ng-model="ctrl.display.equation"
+                                                ng-model-options="{updateOn: 'ctrl.calcForm.equal'}">
+                    </div>
                     <div class="keys">
                         <p>
                         <p>
@@ -36,7 +38,7 @@ and open the template in the editor.
                         <input type="button" class="button pink" value="-">
                         </p>
                         <p>
-                        <input type="button" class="button black" value="1">
+                        <input type="button" class="button black" value="1" ng-click="ctrl.setNumber(1)">
                         <input type="button" class="button black" value="2">
                         <input type="button" class="button black" value="3">
                         <input type="button" class="button pink" value="+">
@@ -45,7 +47,7 @@ and open the template in the editor.
                         <input type="button" class="button black" value="0">
                         <input type="button" class="button black" value=".">
                         <input type="button" class="button pink" value="C">
-                        <input type="button" class="button orange" value="=">
+                        <input type="button" class="button orange" value="=" ng-click="ctrl.calcForm.equal = !ctrl.calcForm.equal">
                         </p>
                     </div>
                 </div>
