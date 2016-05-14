@@ -8,7 +8,21 @@ var mainApp = angular.module('mainApp',['ngRoute']);
 mainApp.config(['$routeProvider',
     function($routeProvider){
         $routeProvider
-                .when('/',{
-                    templateUrl: 'index.html'
-                });
+                .when('/home',{
+                    templateUrl: 'pages/home.html'
+                })
+                .when('/mathCalc',{
+                     templateUrl: 'pages/mathCalc.html',
+                     controller: 'MathController',
+                     controllerAs: 'ctrl'
+                        })
+                .when('/about',{
+                    templateUrl: 'pages/about.html'
+                })
+                .when('/contact',{
+                    templateUrl: 'pages/contact.html'
+                })
+                .otherwise({
+                  redirectTo: '/home'
+              });
     }]);
