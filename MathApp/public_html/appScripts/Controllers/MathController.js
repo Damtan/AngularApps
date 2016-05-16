@@ -10,7 +10,7 @@ angular.module('mainApp').controller('MathController',['MathService',
         
         self.display = MathService.display;
         self.calcForm = MathService.calcForm;
-        self.setNumber = MathService.setNumber;
-        
+        self.compute = MathService.compute;
+        self.setEquation = MathService.setEquation;
         return self;
     }]);
