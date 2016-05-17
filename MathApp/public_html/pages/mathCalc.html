@@ -14,38 +14,39 @@ and open the template in the editor.
         <div class="container">
             <div class="row">
                 <div class="box">
-                    <div class="display"><input type="text" readonly size="18" id="display"></div>
+                    <div class="display"><input type="text" readonly size="18" id="display" ng-model="ctrl.display.equation" maxlength="22">
+                    </div>
                     <div class="keys">
                         <p>
                         <p>
                         <input type="button" class="button gray" value="MRC">
                         <input type="button" class="button gray" value="MR-">
                         <input type="button" class="button gray" value="MR+">
-                        <input type="button" class="button pink" value="/">
+                        <input type="button" class="button pink" value="/" ng-click="ctrl.setEquation('/')">
                         </p>
                         <p>
-                        <input type="button" class="button black" value="7">
-                        <input type="button" class="button black" value="8">
-                        <input type="button" class="button black" value="9">
-                        <input type="button" class="button pink" value="*">
+                        <input type="button" class="button black" value="7" ng-click="ctrl.setEquation(7)">
+                        <input type="button" class="button black" value="8" ng-click="ctrl.setEquation(8)">
+                        <input type="button" class="button black" value="9" ng-click="ctrl.setEquation(9)">
+                        <input type="button" class="button pink" value="*" ng-click="ctrl.setEquation('*')">
                         </p>
                         <p>
-                        <input type="button" class="button black" value="4">
-                        <input type="button" class="button black" value="5">
-                        <input type="button" class="button black" value="6">
-                        <input type="button" class="button pink" value="-">
+                        <input type="button" class="button black" value="4" ng-click="ctrl.setEquation(4)">
+                        <input type="button" class="button black" value="5" ng-click="ctrl.setEquation(5)">
+                        <input type="button" class="button black" value="6" ng-click="ctrl.setEquation(6)">
+                        <input type="button" class="button pink" value="-" ng-click="ctrl.setEquation('-')">
                         </p>
                         <p>
-                        <input type="button" class="button black" value="1">
-                        <input type="button" class="button black" value="2">
-                        <input type="button" class="button black" value="3">
-                        <input type="button" class="button pink" value="+">
+                        <input type="button" class="button black" value="1" ng-click="ctrl.setEquation(1)">
+                        <input type="button" class="button black" value="2" ng-click="ctrl.setEquation(2)">
+                        <input type="button" class="button black" value="3" ng-click="ctrl.setEquation(3)">
+                        <input type="button" class="button pink" value="+"  ng-click="ctrl.setEquation('+')">
                         </p>
                         <p>
-                        <input type="button" class="button black" value="0">
-                        <input type="button" class="button black" value=".">
-                        <input type="button" class="button pink" value="C">
-                        <input type="button" class="button orange" value="=">
+                        <input type="button" class="button black" value="0" ng-click="ctrl.setEquation(0)">
+                        <input type="button" class="button black" value="." ng-click="ctrl.setEquation('.')">
+                        <input type="button" class="button pink" value="C" ng-click="ctrl.clean()">
+                        <input type="button" class="button orange" value="=" ng-click="ctrl.compute()">
                         </p>
                     </div>
                 </div>
