@@ -12,5 +12,6 @@ angular.module('mainApp').controller('MathController',['MathService',
         self.calcForm = MathService.calcForm;
         self.compute = MathService.compute;
         self.setEquation = MathService.setEquation;
+        self.clean = MathService.clean;
         return self;
     }]);
