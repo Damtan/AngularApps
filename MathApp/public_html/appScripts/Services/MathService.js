@@ -29,7 +29,6 @@ angular.module('mainApp').service('MathService',
                             self.display.result[self.calcForm.numberIndex] += variable;
                             self.calcForm.dotIsSet = true;
                             self.display.equation += variable;
-                            console.log('dodaje .');
                         } else {
                             if (variable !== '.') {
                                 self.display.result.push(variable);
