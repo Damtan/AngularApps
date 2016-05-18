@@ -16,9 +16,6 @@ mainApp.config(['$routeProvider',
                      controller: 'MathController',
                      controllerAs: 'ctrl'
                         })
-                .when('/about',{
-                    templateUrl: 'pages/about.html'
-                })
                 .when('/contact',{
                     templateUrl: 'pages/contact.html'
                 })
