@@ -13,5 +13,8 @@ angular.module('mainApp').controller('MathController',['MathService',
         self.compute = MathService.compute;
         self.setEquation = MathService.setEquation;
         self.clean = MathService.clean;
+        self.mrPlus = MathService.mrPlus;
+        self.mrMinus = MathService.mrMinus;
+        self.mrc = MathService.mrc;
         return self;
     }]);

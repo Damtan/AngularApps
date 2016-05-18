@@ -19,7 +19,8 @@ angular.module('mainApp').service('MathService',
                 numberOfSign: 0,
                 numberIndex: 0,
                 dotIsSet: false,
-                numberIsSet: true
+                memory: 0,
+                numberForMRplus: ''
             };
 
             self.setEquation = function (variable) {
@@ -29,6 +30,7 @@ angular.module('mainApp').service('MathService',
                             self.display.result[self.calcForm.numberIndex] += variable;
                             self.calcForm.dotIsSet = true;
                             self.display.equation += variable;
+                            self.calcForm.numberForMRplus += variable.toString();
                         } else {
                             if (variable !== '.') {
                                 self.display.result.push(variable);
@@ -37,6 +39,7 @@ angular.module('mainApp').service('MathService',
                                 self.signIsSet = !self.signIsSet;
                                 self.display.equation += variable;
                                 self.calcForm.dotIsSet = false;
+                                self.calcForm.numberForMRplus = '';
                             }
                         }
                     }
@@ -46,8 +49,15 @@ angular.module('mainApp').service('MathService',
                         self.calcForm.numberIsSet = true;
                         if (isNaN(self.display.result[self.calcForm.numberIndex])) {
                             self.display.result.push(variable.toString());
+                            if (!isNaN(variable))
+                            {
+                                self.calcForm.numberForMRplus += variable.toString();
+                            } else {
+                                self.calcForm.numberForMRplus = '';
+                            }
                         } else {
                             self.display.result[self.calcForm.numberIndex] += variable.toString();
+                            self.calcForm.numberForMRplus += variable.toString();
                         }
                         self.signIsSet = false;
                     } else {
@@ -56,8 +66,10 @@ angular.module('mainApp').service('MathService',
                         self.display.equation += variable;
                         if (isNaN(self.display.result[self.calcForm.numberIndex])) {
                             self.display.result.push(variable.toString());
+                            self.calcForm.numberForMRplus = '';
                         } else {
                             self.display.result[self.calcForm.numberIndex] += variable.toString();
+                            self.calcForm.numberForMRplus += variable.toString();
                         }
                         self.signIsSet = false;
                     }
@@ -138,10 +150,12 @@ angular.module('mainApp').service('MathService',
                         self.findMultiple();
                         self.findPlus();
                         self.findMinus();
-                        if(self.display.result.toString().indexOf('.') === -1){
+                        if (self.display.result.toString().indexOf('.') === -1) {
                             self.calcForm.dotIsSet = false;
-                        }else self.calcForm.dotIsSet = true;
+                        } else
+                            self.calcForm.dotIsSet = true;
                         self.display.equation = self.display.result[0].toString();
+                        self.calcForm.numberForMRplus = self.display.equation;
                         self.calcForm.numberIndex = 0;
                     } else {
                         self.display.equation = '';
@@ -159,7 +173,24 @@ angular.module('mainApp').service('MathService',
                 self.display.result.splice(0, self.display.result.length);
                 self.calcForm.dotIsSet = false;
                 self.signIsSet = false;
+                self.calcForm.numberForMRplus = '';
             };
 
+            self.mrPlus = function (variable) {
+                if (!isNaN(variable)) {
+                    self.calcForm.memory += parseFloat(self.calcForm.numberForMRplus);
+                }
+            };
+
+            self.mrMinus = function (variable) {
+                if (!isNaN(variable)) {
+                    self.calcForm.memory -= parseFloat(self.calcForm.numberForMRplus);
+                }
+            };
+
+            self.mrc = function () {
+                self.display.equation = self.calcForm.memory.toString();
+                self.calcForm.memory = 0;
+            };
             return this;
         });
